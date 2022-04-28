@@ -1,0 +1,2 @@
+rootProject.name = "AlerteSocket"
+include ':app'
