@@ -7,12 +7,6 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.java_websocket.client.WebSocketClient;
-import org.java_websocket.handshake.ServerHandshake;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -24,8 +18,4 @@ public class MainActivity extends AppCompatActivity {
             startForegroundService(serviceIntent);
         }
     }
-
-
-
-
 }

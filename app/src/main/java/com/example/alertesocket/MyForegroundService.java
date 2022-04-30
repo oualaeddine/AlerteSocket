@@ -28,18 +28,6 @@ public class MyForegroundService extends Service {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        new Thread(() -> {
-            while (true) {
-                Log.e("Service", "Service is running...");
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        ).start();
-
         final String CHANNELID = "Foreground Service ID";
         NotificationChannel channel = null;
         channel = new NotificationChannel(
@@ -58,6 +46,7 @@ public class MyForegroundService extends Service {
         startForeground(1001, notification.build());
 
         mp = MediaPlayer.create(this.getApplicationContext(), R.raw.alarm);
+
         connectWebSocket();
 
         return super.onStartCommand(intent, flags, startId);
@@ -87,6 +76,7 @@ public class MyForegroundService extends Service {
             @Override
             public void onMessage(String s) {
                 Log.e("TAG", "onMessage: " + s);
+
                 mp.start();
                 mp.setLooping(false);
             }
